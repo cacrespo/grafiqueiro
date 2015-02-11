@@ -5,7 +5,7 @@
 # FECHA: febrero de 2015
 
 # Módulos para cargar archivos XLSX / PPTX
-#
+from pptx import *
 #
 
 
