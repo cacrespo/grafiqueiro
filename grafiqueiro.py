@@ -9,15 +9,27 @@ from pptx import *
 #
 
 
-
 # Cuerpo del programa
 
-Class PPT:
-  def __init__(sef,ruta):
-    pass
+def abrir_ppt(ruta):
+  global ppt
+  ppt = Presentation(ruta)
+  pass
 
+def correr_syntax(ruta):
+  pass
 
+def abrir_xls(ruta):
+  pass
 
+def carga_grafico():
+  pass
+
+def carga_tabla():
+  pass
+
+def carga_shape():
+  pass
 
 
 
