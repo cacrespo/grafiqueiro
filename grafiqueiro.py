@@ -34,3 +34,12 @@ def carga_shape():
 
 
 # funciones : carga presentación, carga planilla de datos, carga archivo de comandos, comandos.
+
+
+
+if __name__ == '__main__':
+try:
+ejecutar()
+#except (KeyboardInterrupt, SystemExit):
+#pass
+
