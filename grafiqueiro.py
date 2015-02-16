@@ -29,7 +29,14 @@ def carga_tabla():
   pass
 
 def carga_shape():
-  pass
+   # a = Presentacion
+   # b = N° de Slide
+   # c = Texto
+   # d = Nombre del objeto
+    for j in range(0,len(a.slides[b-1].shapes)):
+        print j
+        if a.slides[b-1].shapes[j].name == d:
+            a.slides[b-1].shapes[j].text = c
 
 
 
