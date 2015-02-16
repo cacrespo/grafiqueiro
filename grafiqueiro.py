@@ -28,7 +28,7 @@ def carga_grafico():
 def carga_tabla():
   pass
 
-def carga_shape():
+def carga_shape(a,b,c,d):
    # a = Presentacion
    # b = N° de Slide
    # c = Texto
