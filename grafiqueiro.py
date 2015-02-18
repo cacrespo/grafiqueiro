@@ -11,10 +11,31 @@ from pptx import *
 
 # Cuerpo del programa
 
-def abrir_ppt(ruta):
-  global ppt
-  ppt = Presentation(ruta)
-  pass
+
+class Grafiqueiro:
+
+    def __init__(self):
+        ''' Clase que contiene modelos, planillas y syntaxis'''
+        self.ppt=None
+        self.xls=None
+        self.txt=""
+        self.ruta_salida=""
+
+    def abrir_ppt(self,ruta):
+        '''Crea el objeto PPTX y establece texto de ruta de archivo de salida'''
+        self.ppt=Presentation(ruta)
+        self.ruta_salida = ruta[0:-5] + "_salida.pptx"
+        pass
+
+    def carga_shape(self,b,c,d):
+        # self.ppt = Presentacion
+        # b = N° de Slide
+        # c = Texto
+        # d = Nombre del objeto
+        for j in range(0,len(self.ppt.slides[b-1].shapes)):
+            if self.ppt.slides[b-1].shapes[j].name == d:
+                self.ppt.slides[b-1].shapes[j].text = c
+        self.ppt.save(self.ruta_salida)
 
 def correr_syntax(ruta):
   pass
@@ -28,15 +49,6 @@ def carga_grafico():
 def carga_tabla():
   pass
 
-def carga_shape(a,b,c,d):
-   # a = Presentacion
-   # b = N° de Slide
-   # c = Texto
-   # d = Nombre del objeto
-    for j in range(0,len(a.slides[b-1].shapes)):
-        print j
-        if a.slides[b-1].shapes[j].name == d:
-            a.slides[b-1].shapes[j].text = c
 
 
 
