@@ -32,6 +32,14 @@ class Grafiqueiro:
         ''' Crea el objeto XLSX'''
         self.xls=load_workbook(ruta).get_sheet_by_name("Datos")
 
+    def identifica(self,b,c):
+        ''' Identifica el objeto por el nombre y lo devuelve
+        b = N° de slide
+        c = Nombre '''
+        for j in range(0,len(self.ppt.slides[b-1].shapes)):
+            if self.ppt.slides[b-1].shapes[j].name == c:
+                return self.ppt.slides[b-1].shapes[j]
+
 
     def carga_shape(self,b,c,d):
         '''Carga shape con el valor de una celda
@@ -39,9 +47,8 @@ class Grafiqueiro:
         b = N° de Slide
         c = Texto (celda entre comillas y en mayúsculas)
         d = Nombre del objeto'''
-        for j in range(0,len(self.ppt.slides[b-1].shapes)):
-            if self.ppt.slides[b-1].shapes[j].name == d:
-                self.ppt.slides[b-1].shapes[j].text = self.xls[c.upper()].value
+        shape = self.identifica(b,d)
+        shape.text = self.xls[c.upper()].value
         self.ppt.save(self.ruta_salida)
 
     def carga_grafico(self,b,c,d):
@@ -50,10 +57,8 @@ class Grafiqueiro:
         b = N° de Slide
         c = Rango de celdas
         d = Nombre del objeto'''
-        for j in range(0,len(self.ppt.slides[b-1].shapes)):
-            if self.ppt.slides[b-1].shapes[j].name == d:
-                #print self.ppt.slides[b-1].shapes[j].table
-                pass
+        grafico = self.identifica(b,d)
+        pass
 
     def carga_tabla(self,b,c,d):
         '''Carga grafico con valores de un rango de celdas
@@ -61,9 +66,17 @@ class Grafiqueiro:
         b = N° de Slide
         c = Rango de celdas
         d = Nombre del objeto'''
+        tabla = self.identifica(b,d)
         pass
 
-    def carga_caja():
+    def carga_caja(self,b,c,d,e):
+        '''Carga cajas con series a partir de un rango de celdas
+        self.ppt = Presentacion
+        b = N° de Slide
+        c = Celda n° 1
+        d = Nombre del objeto
+        e = direccion (vertical / horizontal)'''
+        caja = self.identifica(b,d)
         pass
 
 
@@ -72,8 +85,6 @@ class Grafiqueiro:
 
     def correr_syntax(ruta):
         pass
-
-
 
 
 
