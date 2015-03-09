@@ -67,7 +67,17 @@ class Grafiqueiro:
         c = Rango de celdas
         d = Nombre del objeto'''
         tabla = self.identifica(b,d)
-        pass
+        j = 0
+        i = 0
+        for row in self.xls[c]:
+            i = 0
+            for cell in row:
+                if len(tabla.table.rows)>(j) and len(tabla.table.columns)>(i):
+                    tabla.table.cell(j,i).text_frame.text = str(cell.value)
+                    tabla.table.cell(j,i).text_frame.text = tabla.table.cell(j,i).text_frame.text.replace('None', '')
+                i = i + 1
+            j = j + 1
+        self.ppt.save(self.ruta_salida)
 
     def carga_caja(self,b,c,d,e):
         '''Carga cajas con series a partir de un rango de celdas
