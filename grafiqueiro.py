@@ -48,8 +48,9 @@ class Grafiqueiro:
         c = Texto (celda entre comillas y en mayúsculas)
         d = Nombre del objeto'''
         shape = self.identifica(b,d)
-        shape.text = self.xls[c.upper()].value
-        self.ppt.save(self.ruta_salida)
+        if shape <> None:
+            shape.text = str(self.xls[c.upper()].value)
+            self.ppt.save(self.ruta_salida)
 
     def carga_grafico(self,b,c,d):
         '''Carga grafico con valores de un rango de celdas
@@ -86,10 +87,21 @@ class Grafiqueiro:
         c = Celda n° 1
         d = Nombre del objeto
         e = direccion (vertical / horizontal)'''
-        caja = self.identifica(b,d)
-        pass
+        lista = []
+        celda = self.xls.cell(c)
+        for j in range(0,len(self.ppt.slides[b-1].shapes)):
+            lista.append(d+" "+str(j+1))
 
-
+        ' Utilizo condicional para establecer la dirección del carga_shape
+        a= 0
+        if e == 1:
+            for i in lista:
+                self.carga_shape(b,celda.offset(a).coordinate,i)
+                a += 1
+        if e == 0:
+            for i in lista:
+                self.carga_shape(b,celda.offset(0,a).coordinate,i)
+                a += 1
 
 
 
@@ -98,14 +110,9 @@ class Grafiqueiro:
 
 
 
-
-# funciones : carga presentación, carga planilla de datos, carga archivo de comandos, comandos.
-
-
-
-if __name__ == '__main__':
-try:
-ejecutar()
+#if __name__ == '__main__':
+#try:
+#ejecutar()
 #except (KeyboardInterrupt, SystemExit):
 #pass
 
