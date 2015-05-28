@@ -63,6 +63,8 @@ class Grafiqueiro:
         
         altura = len(list(self.xls[c])) 'calcula altura de la tabla
         ancho = len(list(self.xls[c])[0]) 'calcula ancho de la tabla
+        datos = ChartData()
+        datos.categories = []
         
         pass
 
