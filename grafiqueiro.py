@@ -9,6 +9,7 @@
 
 from pptx import *
 from openpyxl import *
+from pptx.chart.data import ChartData
 
 #
 # Cuerpo del programa
