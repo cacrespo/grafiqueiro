@@ -60,6 +60,10 @@ class Grafiqueiro:
         c = Rango de celdas
         d = Nombre del objeto'''
         grafico = self.identifica(b,d)
+        
+        altura = len(list(self.xls[c])) 'calcula altura de la tabla
+        ancho = len(list(self.xls[c])[0]) 'calcula ancho de la tabla
+        
         pass
 
     def carga_tabla(self,b,c,d):
