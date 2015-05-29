@@ -1,6 +1,3 @@
-- Armar un patrón para la carga de gráficos
-- F(x) que calcule el ancho y alto del rango de la tabla
-- F(x) que tome rangos del excel y arme las series, categorías y valores del CharData
-  http://python-pptx.readthedocs.org/en/latest/user/placeholders-using.html
-  Columnas = Series [nombre y valores por filas]
-  Filas = Categories [set de nombres]
+Desarrollar:  - correr syntax
+Indagar tkinter
+
