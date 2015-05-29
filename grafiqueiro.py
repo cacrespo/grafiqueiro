@@ -61,10 +61,18 @@ class Grafiqueiro:
         d = Nombre del objeto'''
         grafico = self.identifica(b,d)
         
-        altura = len(list(self.xls[c])) 'calcula altura de la tabla
-        ancho = len(list(self.xls[c])[0]) 'calcula ancho de la tabla
+        altura = len(list(self.xls[c]))
+        ancho = len(list(self.xls[c])[0])
+
+        categorias = []
+
+        for j in range(1,altura):
+            categorias.append(list(self.xls[c])[j][0].value)
+
+
         datos = ChartData()
-        datos.categories = []
+        datos.categories = categorias
+        print datos.categories
         
         pass
 
