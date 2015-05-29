@@ -61,20 +61,41 @@ class Grafiqueiro:
         d = Nombre del objeto'''
         grafico = self.identifica(b,d)
         
+                '''Carga grafico con valores de un rango de celdas
+        self.ppt = Presentacion
+        b = N° de Slide
+        c = Rango de celdas
+        d = Nombre del objeto'''
+        grafico = self.identifica(b,d)
+
         altura = len(list(self.xls[c]))
         ancho = len(list(self.xls[c])[0])
 
+        tabla = []
         categorias = []
 
-        for j in range(1,altura):
-            categorias.append(list(self.xls[c])[j][0].value)
+        for j in range(0,ancho):
+            columna = []
+            for i in range(0,altura):
+                columna.append(list(self.xls[c])[i][j].value)
+            tabla.append(columna)
 
 
         datos = ChartData()
+
+
+        for i in range(1,ancho):
+            datos.add_series(tabla[i][0],tabla[i][1:])
+
+        for i in range(1,altura):
+            categorias.append(tabla[0][i])
+
+
         datos.categories = categorias
-        print datos.categories
-        
-        pass
+        grafico.chart.replace_data(datos)
+        self.ppt.save(self.ruta_salida)
+
+
 
     def carga_tabla(self,b,c,d):
         '''Carga grafico con valores de un rango de celdas
