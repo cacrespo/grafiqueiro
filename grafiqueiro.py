@@ -142,8 +142,11 @@ class Grafiqueiro:
 
 
     def correr_syntax(ruta):
-        pass
-
+        comandos = open(ruta)
+        for linea in comandos:
+            print linea
+            exec("self."+linea)
+        self.ppt.save(self.ruta_salida)
 
 
 #if __name__ == '__main__':
