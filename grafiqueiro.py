@@ -110,7 +110,7 @@ class Grafiqueiro:
             i = 0
             for cell in row:
                 if len(tabla.table.rows)>(j) and len(tabla.table.columns)>(i):
-                    tabla.table.cell(j,i).text_frame.text = str(cell.value)
+                    tabla.table.cell(j,i).text_frame.text = unicode(cell.value)
                     tabla.table.cell(j,i).text_frame.text = tabla.table.cell(j,i).text_frame.text.replace('None', '')
                 i = i + 1
             j = j + 1
