@@ -50,7 +50,7 @@ class Grafiqueiro:
         d = Nombre del objeto'''
         shape = self.identifica(b,d)
         if shape <> None:
-            shape.text = str(self.xls[c.upper()].value)
+            shape.text = unicode(self.xls[c.upper()].value)
             self.ppt.save(self.ruta_salida)
 
     def carga_grafico(self,b,c,d):
