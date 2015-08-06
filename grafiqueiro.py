@@ -6,10 +6,13 @@
 # FECHA: febrero de 2015
 # Módulos para cargar archivos XLSX / PPTX
 # Dependencias: python-pptx, openpyxl
+# Prueba GIT
 
 from pptx import *
 from openpyxl import *
 from pptx.chart.data import ChartData
+import sys
+import os
 
 #
 # Cuerpo del programa
@@ -61,12 +64,6 @@ class Grafiqueiro:
         d = Nombre del objeto'''
         grafico = self.identifica(b,d)
         
-                '''Carga grafico con valores de un rango de celdas
-        self.ppt = Presentacion
-        b = N° de Slide
-        c = Rango de celdas
-        d = Nombre del objeto'''
-        grafico = self.identifica(b,d)
 
         altura = len(list(self.xls[c]))
         ancho = len(list(self.xls[c])[0])
@@ -128,7 +125,7 @@ class Grafiqueiro:
         for j in range(0,len(self.ppt.slides[b-1].shapes)):
             lista.append(d+" "+str(j+1))
 
-        ' Utilizo condicional para establecer la dirección del carga_shape
+        # Utilizo condicional para establecer la dirección del carga_shape
         a= 0
         if e == 1:
             for i in lista:
@@ -141,17 +138,22 @@ class Grafiqueiro:
 
 
 
-    def correr_syntax(ruta):
+    def correr_syntax(self,ruta):
         comandos = open(ruta)
         for linea in comandos:
             print linea
             exec("self."+linea)
         self.ppt.save(self.ruta_salida)
 
+def ejecutar(ppt,xls,txt):
+    grafiqueiro = Grafiqueiro()
+    grafiqueiro.abrir_ppt(str(os.getcwd()+"\\"+ppt))
+    grafiqueiro.abrir_xls(str(os.getcwd()+"\\"+xls))
+    grafiqueiro.correr_syntax(str(os.getcwd()+"\\"+txt))
 
-#if __name__ == '__main__':
-#try:
-#ejecutar()
-#except (KeyboardInterrupt, SystemExit):
-#pass
+if __name__ == '__main__':
+    try:
+        ejecutar(sys.argv[1], sys.argv[2], sys.argv[3])
+    except (KeyboardInterrupt, SystemExit):
+        pass
 
